@@ -27,14 +27,15 @@ export default {
                 //console.log(this.item);
                 return;
             }
-console.log(this.item.name);
+            //console.log(this.item.name);
             axios.post('/api/items',{
                 item: this.item
             })
                 .then( response => {
                     console.log(response);
                     if(response.status === 201){
-                        this.item.name === "";
+                        this.item.name = "";
+                        this.$emit('reloadList');
                     }
                 })
                 .catch( error =>{
